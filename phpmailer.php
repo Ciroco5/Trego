@@ -16,7 +16,7 @@ $email = $_POST['email'];
 $comment = $_POST['comment'];
 $subject = 'Mensaje recibido desde www.reciclajetrego.com';
 
-$recaptcha_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; //Add secret key
+$recaptcha_secret = "6LcuN5MpAAAAADuwrHLGZQhd7UVhSFyKEkrgoEVo"; //Add secret key
 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptcha_secret."&response=".$_POST['g-recaptcha-response']);
 $response = json_decode($response, true);
 
@@ -36,10 +36,10 @@ try {
     //Server setting
     $mailer->SMTPDebug = 0;
     $mailer->isSMTP();
-    $mailer->Host = 'c1712239.ferozo.com'; //Cambiarlo por el servidor de correo saliente SMTP del hosting contratado
+    $mailer->Host = 'c1631460.ferozo.com'; //Servidor de correo saliente SMTP del hosting
     $mailer->SMTPAuth = true;  
-    $mailer->Username = 'info@reciclajetrego.com.ar';
-    $mailer->Password = 'XXXXXXXXXXXX';                          
+    $mailer->Username = 'contacto@reciclajetrego.com';
+    $mailer->Password = '/V317EX8nT';                          
     $mailer->SMTPSecure = 'ssl';
     $mailer->Port = 465;
     $mailer->AltBody = strip_tags($body);
@@ -47,7 +47,7 @@ try {
 
     //Recipients
     $mailer->setFrom( $email, "$name" );
-    $mailer->addAddress('info@reciclajetrego.com.ar','Sitio web');
+    $mailer->addAddress('contacto@reciclajetrego.com','Sitio web');
 
     //Content
     $mailer->isHTML(true);
