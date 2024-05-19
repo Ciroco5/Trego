@@ -65,9 +65,18 @@ h3 {
 }
 
 header {
-    background-color: #385783;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    left: 0;
+    transition: all 0.3s ease;
+
+    @media (max-width: 767px) {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+    }
 
     &.sticky {
+        background-color: rgba(0, 0, 0, 0.7);
         transition: all 1s;
         position: fixed;
         z-index: 999;
@@ -75,7 +84,13 @@ header {
         width: 100%;
         
         .logo {
-            font-size: 2.5rem;
+            @media (min-width: 768px) {
+                width: 80px;
+            }
+        }
+
+        .navbar {
+            transform: none;
         }
     }
 
@@ -88,14 +103,19 @@ header {
     }
 
     .logo {
-        font-size: 3rem;
-        font-weight: 800;
-        color: #fff;
-        text-decoration: none;
+        width: 140px;
+        transition: all 0.3s ease;
+
+        @media (max-width: 767px) {
+            width: 60px;
+        }
     }
 
     .navbar {
+        transform: translateY(-3rem);
+
         @media (max-width: 767px) {
+            transform: none;
             position: absolute;
             right: 1rem;
             top: 0;
@@ -104,12 +124,21 @@ header {
         .navbar-toggler {
             position: absolute;
             right: 0;
-            top: 1.5rem;
+            top: 3rem;
             border: 0;
 
+            &:focus {
+                box-shadow: none;
+            }
+
             .navbar-toggler-icon {
-                width: 3rem;
+                width: 3.5rem;
                 height: 2.5rem;
+
+                span {
+                    display: inline-block;
+                    width: 100%;
+                }
             }
         }
 
@@ -134,22 +163,28 @@ header {
                 .nav-link {
                     color: #fff;
                     text-transform: uppercase;
-                    font-size: 1.6rem;
+                    font-size: 1.5rem;
                     transition: all 0.3s ease;
+                    font-weight: 600;
 
                     &:hover {
-                        transform: translateY(2px);
+                        opacity: 0.8;
                     }
                 }
             }
         }
 
         .navbar-collapse {
+            /*solucion al problema del click en nav bar desktop*/
+            @media(min-width: 768px) {
+                height: auto !important;
+            }
+
             @media (max-width: 767px) {
                 position: fixed;
-                top: 65px;
+                top: 91px;
                 width: 100%;
-                background-color: #555;
+                background-color: rgba(0, 0, 0, 0.85);
                 left: 0;
                 z-index: 999;
             }
@@ -160,17 +195,13 @@ header {
 .hero {
     background-image: linear-gradient(120deg, rgba(131, 96, 195, 0.699) 0%, rgba(46, 191, 145, 0.692) 100%), url("../../assets/images/Hero.webp");
     width: 100%;
-    height: 550px;
+    height: 650px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
     overflow: hidden;
-
-    @media (min-width: 768px) {
-        height: 652px;
-    }
 
     .container {
         height: 100%;
@@ -187,10 +218,10 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 25%;
+        margin-top: 50%;
         
         @media (min-width: 768px) {
-            margin-top: 12%;
+            margin-top: 18%;
         }
         
         p {
@@ -255,6 +286,12 @@ header {
         max-width: 70%;
         margin: 0 auto 2rem;
         display: block;
+    }
+}
+
+.info-last {
+    @media (max-width: 767px) {
+        padding-bottom: 0;
     }
 }
 
